@@ -11,7 +11,7 @@ const ListItemMovie = ({ movie }: { movie: Movie }) => {
                         <h3 className="text-2xl font-bold text-white mt-14 ml-12 h-[80px]">{title}</h3>
                         <div className="flex items-center justify-start gap-2 my-2">    
                             <div className="max-w-[200px] flex rounded-full mx-auto bg-gradient-to-tr from-violet-400 to-green-400 p-[1px] shadow-lg">
-                             <Link href={`/movie/${_id}`}>
+                             <Link href={`/movies/${_id}`}>
                                 <button className="flex-1 font-bold md:text-xl lg:text-sm bg-black px-6 py-3 rounded-full">
                                     Xem chi tiết
                                 </button>

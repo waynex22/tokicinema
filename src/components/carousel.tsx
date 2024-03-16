@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Movie } from "@/utils/types/movie";
-import ListItemMovie from "./listItemMovie";
+import {ListItemMovie} from "@/components";
 
 const Carousel = ({ movies }: { movies: Movie[] }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);

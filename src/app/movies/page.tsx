@@ -12,8 +12,6 @@ const Movies = () => {
     useEffect(() => {
         dispatch(getMovies());
     }, [dispatch]);
-
-    
     return (
         <div>
             {status === "loading" && <div>Loading...</div>}

@@ -13,7 +13,7 @@ const Header = () => {
     const handleMenuClose = () => {
         setMenuOpen(false);
       };
-    console.log(user);
+    // console.log(user);
     useEffect(() => {
         dispatch(getUser());
     }, [dispatch])
@@ -40,7 +40,7 @@ const Header = () => {
                         </div>
                     </Link>
                     <div className="flex justify-start items-center w-[25%]">
-                        <Link href="/movie" className='text-1xl font-bold mx-5'>Phim Đang Chiếu</Link>
+                        <Link href="/movies" className='text-1xl font-bold mx-5'>Phim Đang Chiếu</Link>
                         {user ? (
                             <div className="relative inline-block text-left">
                                 <button

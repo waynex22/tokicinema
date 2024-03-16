@@ -6,7 +6,8 @@ import { Footer } from "@/components";
 import ReduxProvider from "@/redux/Provider";
 const poppins = Poppins({
   subsets: ['latin-ext'],
-  weight: "400"
+  weight: "300",
+  style: "italic"
 });
 export const metadata: Metadata = {
   title: "Toki Cinema",

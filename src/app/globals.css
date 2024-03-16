@@ -27,6 +27,7 @@ body {
     background-image: url(../../public//images/wallpaper.jpg);
     background-position: 30% 0;
     background-size: cover;
+    font-family: "Audiowide", sans-serif;
 }
 
 @layer utilities {

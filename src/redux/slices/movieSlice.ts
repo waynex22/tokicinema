@@ -5,6 +5,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
   movies: [],
+  movie: null,
   status: 'idle',
   error: null
 };
@@ -15,7 +16,11 @@ export const getMovies = createAsyncThunk('movie/getMovies', async () => {
 });
 export const addNewMovie = createAsyncThunk('movie/addNew', async (data: Movie) => {
   const res = await request.post('/movie/add', data)
-  return res
+  return res.data;
+})
+export const getMovieById = createAsyncThunk('movie/id', async (_id: string) => {
+  const res = await request.get(`/movie/${_id}`);
+  return res.data;
 })
 const movieSlice = createSlice({
   name: 'movie',
@@ -23,7 +28,6 @@ const movieSlice = createSlice({
   reducers: {
     addNewMovie: (state, action: PayloadAction<Movie>) => {
       const movie = action.payload;
-
     }
   },
   extraReducers: (builder) => {
@@ -44,11 +48,22 @@ const movieSlice = createSlice({
       })
       .addCase(addNewMovie.fulfilled, (state, action: PayloadAction<any>) => {
         state.status = 'succeeded';
-        state.movies.push(action.payload);
+        state.movies = action.payload;
       })
       .addCase(addNewMovie.rejected, (state, action: PayloadAction<any>) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      .addCase(getMovieById.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getMovieById.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        state.movie = action.payload;
+      })
+      .addCase(getMovieById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       })
   },
 });

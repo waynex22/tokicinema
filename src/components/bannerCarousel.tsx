@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import ListBanner from "./listBanner";
 import { Banner } from "@/utils/types/banner";
 
-const BannerCarousel = ({ banners }: { banners: Banner[] }) => {
+const BannerCarousel = (props : any) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+      prevIndex === props.banners.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -26,7 +26,7 @@ const BannerCarousel = ({ banners }: { banners: Banner[] }) => {
             transform: `translateX(-${currentIndex * 100}%)`,
           }}
         >
-          {banners.map((banner: Banner) => (
+          {props.banners.map((banner: Banner) => (
               <ListBanner  key={banner._id} banner={banner} />
           ))}
         </div>
@@ -36,7 +36,7 @@ const BannerCarousel = ({ banners }: { banners: Banner[] }) => {
         className="absolute z-30 top-[50%] left-[10%] focus:text-blue-300 cursor-pointer"
         onClick={() =>
           setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? banners.length - 1 : prevIndex - 1
+            prevIndex === 0 ? props.banners.length - 1 : prevIndex - 1
           )
         }
       >
